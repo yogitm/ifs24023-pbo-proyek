@@ -1,0 +1,27 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 25
+      uses: actions/setup-java@v4
+      with:
+        java-version: '25'      # Kita minta Java 25
+        distribution: 'temurin' # Distro Java yang stabil
+        cache: maven
+
+    - name: Build with Maven
+      # Perintah ini sama dengan yang kita ketik di terminal, 
+      # lengkap dengan flag untuk mengakali Java 25
+      run: mvn -B package --file pom.xml -Dnet.bytebuddy.experimental=true
