@@ -1,0 +1,13 @@
+/target/
+/uploads/
+.mvn/wrapper/
+.mvn/
+mvnw
+mvnw.cmd
+.vscode/
+.DS_Store
+*.class
+*.jar
+*.war
+.idea/
+*.log
