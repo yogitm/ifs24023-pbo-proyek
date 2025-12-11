@@ -17,5 +17,5 @@ Aplikasi Manajemen Inventaris Alat Musik berbasis Web.
 *   **Quality Assurance:** 100% Unit Test Coverage (JaCoCo).
 
 ## 📸 Screenshots
-![alt text](login.png)
+![alt text](image.png)
 ![alt text](image-1.png)
