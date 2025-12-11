@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="ISO-8859-1">
     <title>ToneMaster - Dashboard</title>
@@ -86,15 +87,51 @@
 <body class="d-flex flex-column min-vh-100"> <!-- Tambahan class Bootstrap -->
 
     <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark animate__animated animate__fadeInDown">
         <div class="container">
+            <!-- Brand Kiri -->
             <a class="navbar-brand fw-bold fs-4" href="/">
                 <i class="fa-solid fa-music me-2 text-info"></i>ToneMaster
+                <span class="text-white small opacity-50 fs-6 ms-2 d-none d-lg-inline">Inventory System</span>
             </a>
-            <span class="text-white small opacity-75">Inventory Management System</span>
+
+            <!-- Tombol Toggle Mobile -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Kanan (User Profile) -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    
+                    <!-- Dropdown User -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white text-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" 
+                                 style="width: 35px; height: 35px;">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <span class="fw-bold" sec:authentication="name">User</span> <!-- Nama User Otomatis -->
+                        </a>
+                        
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 mt-2 p-2">
+                            <li><h6 class="dropdown-header text-muted">Halo, <span sec:authentication="name">User</span>!</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <!-- Tombol Logout -->
+                                <form th:action="@{/logout}" method="post">
+                                    <button type="submit" class="dropdown-item text-danger rounded-3 py-2">
+                                        <i class="fa-solid fa-right-from-bracket me-2"></i> Logout / Ganti Akun
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-
     <!-- KONTEN UTAMA -->
    <div class="container mt-4 flex-grow-1" style="padding-bottom: 100px;"> <!-- mb-5 biar ga nempel footer -->
         
